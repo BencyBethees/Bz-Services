@@ -103,54 +103,45 @@ const page = () => {
 
       {/* ================= CARDS ================= */}
       <div className="w-full bg-black py-16 px-6">
-        <div
-          className="max-w-7xl mx-auto 
-    grid grid-cols-1 
-    md:grid-cols-2 
-    lg:grid-cols-4 
-    gap-8"
-        >
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <div
               key={index}
               className="bg-[#101010] text-[#EAEAEA]
-        w-full
-        p-8
-        text-left
-        border border-transparent
-        hover:border-white
-        transition-all duration-300
-        rounded-lg
-        flex flex-col justify-between"
+          w-full p-6 sm:p-8
+          text-left
+          border border-transparent
+          hover:border-white
+          transition-all duration-300
+          rounded-lg
+          flex flex-col justify-between"
             >
               {/* Icon */}
               <img
                 src={service.icon}
                 alt={service.title}
-                className="mb-6 w-16 h-16"
+                className="mb-4 sm:mb-6 w-12 sm:w-16 h-12 sm:h-16 object-contain"
               />
 
               {/* Title */}
-              <h3 className="text-xl font-semibold hover:text-orange-400 cursor-pointer mb-4">
+              <h3 className="text-lg sm:text-xl font-semibold hover:text-orange-400 cursor-pointer mb-3 sm:mb-4">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-sm leading-6 mb-6">{service.description}</p>
+              <p className="text-xs sm:text-sm leading-5 sm:leading-6 mb-4 sm:mb-6">
+                {service.description}
+              </p>
 
-              <hr className="border-gray-600 my-6" />
+              <hr className="border-gray-600 my-4 sm:my-6" />
 
               {/* Read More */}
               <p
-                className="flex items-center gap-2 text-sm font-medium cursor-pointer 
-          transition-all duration-300 ease-in-out 
-          hover:text-orange-400 group"
+                className="flex items-center gap-2 text-sm font-medium cursor-pointer
+            transition-all duration-300 ease-in-out hover:text-orange-400 group"
               >
                 Read More
-                <FaArrowRight
-                  className="transition-transform duration-300 ease-in-out 
-            rotate-[45deg] group-hover:rotate-[0deg]"
-                />
+                <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
               </p>
             </div>
           ))}
@@ -299,8 +290,8 @@ const page = () => {
       </div>
 
       {/* cards */}
-    <div className="w-full min-h-screen bg-black py-16 px-6">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+     <div className="w-full min-h-screen bg-black py-16 px-6">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
 
     {/* Card 1 */}
     <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
