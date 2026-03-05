@@ -32,38 +32,55 @@ const page = () => {
     <>
       {/* ================= HERO ================= */}
       <div className="relative h-screen sm:h-[85vh] md:h-[90vh] lg:h-[100vh] overflow-hidden">
-        {/* Background Image with Zoom - REDUCED to show car */}
+        {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="/image/bg.jpg"
-            alt="background"
-            className="w-full h-full object-cover scale-[1]" // Changed from 1.4 to 1.1
-          />
+          {/* <div
+    className="
+      w-full h-full
+      bg-[url('/image/bg.jpg')]
+      bg-cover
+      bg-[10%_15%]
+      scale-120
+    "
+  ></div> */}
+
+          <div
+            className="
+    absolute inset-0
+    w-full h-full
+    opacity-120
+    bg-no-repeat
+    bg-center
+    bg-[length:100]
+      bg-[url('/image/bg.jpg')]
+      bg-cover
+  "
+          ></div>
         </div>
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#646060] via-black/60 to-black"></div>
 
         {/* Content */}
         <div
           className="
-    relative z-10 text-white
-    px-6 sm:px-10 md:px-20 lg:px-40
-    pt-24 sm:pt-28 md:pt-36 lg:pt-44
-    text-left
-  "
+      relative z-10 text-white
+      px-6 sm:px-10 md:px-20 lg:px-40
+      pt-24 sm:pt-28 md:pt-36 lg:pt-44
+      text-left
+    "
         >
           {/* Breadcrumb */}
           <div className="mb-5 md:mt-15 text-sm sm:text-base md:text-lg lg:text-xl lg:-ml-[110px]">
             <span className="hover:text-orange-400 cursor-pointer">Home</span>
             <span className="mx-2">.</span>
-            <span className="hover:text-orange-400 cursor-pointer">
+            <span className="hover:text-orange-400 cursor-pointer -mt-3">
               Services
             </span>
           </div>
 
           {/* Hero Heading */}
-          <h1 className="text-4xl sm:text-2xl sm:font-bold  md:text-5xl lg:text-6xl font-extrabold lg:-ml-[110px]">
+          <h1 className="text-4xl sm:text-2xl sm:font-bold md:text-5xl lg:text-6xl font-extrabold lg:-ml-[110px]">
             Services
           </h1>
         </div>
@@ -86,180 +103,301 @@ const page = () => {
 
       {/* ================= CARDS ================= */}
       <div className="w-full bg-black py-16 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => {
-            const isOpen = openIndex === index;
+        <div
+          className="max-w-7xl mx-auto 
+    grid grid-cols-1 
+    md:grid-cols-2 
+    lg:grid-cols-4 
+    gap-8"
+        >
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="bg-[#101010] text-[#EAEAEA]
+        w-full
+        p-8
+        text-left
+        border border-transparent
+        hover:border-white
+        transition-all duration-300
+        rounded-lg
+        flex flex-col justify-between"
+            >
+              {/* Icon */}
+              <img
+                src={service.icon}
+                alt={service.title}
+                className="mb-6 w-16 h-16"
+              />
 
-            return (
-              <div
-                key={index}
-                className="bg-[#101010] text-[#EAEAEA]
-          w-full sm:max-w-[270px]
-          px-6 sm:px-8 pt-8 pb-8
-          text-left
-          border border-transparent
-          hover:border-white
-          transition-all duration-300
-          rounded-lg
-          flex flex-col justify-between"
+              {/* Title */}
+              <h3 className="text-xl font-semibold hover:text-orange-400 cursor-pointer mb-4">
+                {service.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm leading-6 mb-6">{service.description}</p>
+
+              <hr className="border-gray-600 my-6" />
+
+              {/* Read More */}
+              <p
+                className="flex items-center gap-2 text-sm font-medium cursor-pointer 
+          transition-all duration-300 ease-in-out 
+          hover:text-orange-400 group"
               >
-                {/* Icon */}
-                <img
-                  src={service.icon}
-                  alt={service.title}
-                  className="mb-6 w-14 h-14 sm:w-16 sm:h-16"
+                Read More
+                <FaArrowRight
+                  className="transition-transform duration-300 ease-in-out 
+            rotate-[45deg] group-hover:rotate-[0deg]"
                 />
-
-                {/* Title */}
-                <h3 className="text-xl font-semibold hover:text-orange-400 cursor-pointer mb-4">
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-sm leading-6 mb-6">{service.description}</p>
-
-                <hr className="border-gray-600 my-6" />
-
-                {/* Read More */}
-                <p
-                  className="flex items-center gap-2 text-sm font-medium cursor-pointer 
-  transition-all duration-300 ease-in-out hover:text-orange-400 group"
-                >
-                  Read More
-                  <FaArrowRight
-                    className="transition-transform duration-300 ease-in-out 
-    rotate-[45deg] group-hover:rotate-[0deg]"
-                  />
-                </p>
-              </div>
-            );
-          })}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* grid */}
-      <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 px-6 md:px-12 lg:px-20 py-16 bg-black">
-        {/* ================= LEFT CONTENT ================= */}
-        <div className="w-full lg:w-1/2">
-          {/* Orange Dot */}
-          <div className="text-orange-400 text-3xl mb-4">•</div>
+      <div className="w-full  bg-black py-16 md:py-20 px-6 md:px-10 lg:px-20 overflow-hidden">
+        <div
+          className="max-w-7xl mx-auto 
+    flex flex-col 
+    lg:flex-row 
+    items-center 
+    gap-14 lg:gap-20"
+        >
+          {/* ================= LEFT CONTENT ================= */}
+          <div className="w-full lg:w-1/2">
+            {/* Orange Dot */}
+            <div className="text-orange-400 text-3xl mb-4">•</div>
 
-          <p className="text-sm font-bold text-gray-400 tracking-wider">
-            WHY CHOOSE US
-          </p>
+            <p className="text-sm font-bold text-gray-400 tracking-widest">
+              WHY CHOOSE US
+            </p>
 
-          <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
-            Providing the best <br className="hidden sm:block" /> services
-          </h2>
+            <h2
+              className="mt-3 text-3xl sm:text-4xl lg:text-5xl 
+        font-extrabold text-white leading-tight"
+            >
+              Providing the best
+              <br className="hidden sm:block" /> services
+            </h2>
 
-          {/* ================= FEATURES ================= */}
+            <div className="mt-12 space-y-10">
+              {/* Item */}
+              <div className="flex items-start gap-5 group">
+                <div
+                  className="w-14 h-14 flex-shrink-0 
+            bg-[#101010] rounded-full 
+            flex items-center justify-center 
+            transition-all duration-300
+            group-hover:bg-orange-400"
+                >
+                  <FaCheck
+                    className="text-orange-400 text-lg 
+              transition-colors duration-300 
+              group-hover:text-white"
+                  />
+                </div>
 
-          {/* Item 1 */}
-          <div className="flex gap-6 mt-10">
-            <div className="w-14 h-14 bg-[#101010] rounded-full flex items-center justify-center hover:bg-orange-400 transition duration-300">
-              <FaCheck className="text-orange-400 text-xl hover:text-white" />
-            </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                    Innovative Approach
+                  </h3>
+                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                    Our company stands out for its innovative thinking, offering
+                    fresh perspectives and creative solutions to meet your
+                    unique needs.
+                  </p>
+                </div>
+              </div>
 
-            <div>
-              <h3 className="text-lg sm:text-xl font-extrabold text-white mb-2">
-                Innovative Approach
-              </h3>
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-md">
-                Our company stands out for its innovative thinking, offering
-                fresh perspectives and creative solutions to meet your unique
-                needs.
-              </p>
+              {/* Item */}
+              <div className="flex items-start gap-5 group">
+                <div
+                  className="w-14 h-14 flex-shrink-0 
+            bg-[#101010] rounded-full 
+            flex items-center justify-center 
+            transition-all duration-300
+            group-hover:bg-orange-400"
+                >
+                  <FaCheck
+                    className="text-orange-400 text-lg 
+              transition-colors duration-300 
+              group-hover:text-white"
+                  />
+                </div>
+
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                    Proven Track Record
+                  </h3>
+                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                    With a successful track record of delivering high-quality
+                    projects, we have earned the trust of numerous satisfied
+                    clients.
+                  </p>
+                </div>
+              </div>
+
+              {/* Item */}
+              <div className="flex items-start gap-5 group">
+                <div
+                  className="w-14 h-14 flex-shrink-0 
+            bg-[#101010] rounded-full 
+            flex items-center justify-center 
+            transition-all duration-300
+            group-hover:bg-orange-400"
+                >
+                  <FaCheck
+                    className="text-orange-400 text-lg 
+              transition-colors duration-300 
+              group-hover:text-white"
+                  />
+                </div>
+
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                    Expert Team
+                  </h3>
+                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                    Our team of seasoned professionals brings a wealth of
+                    expertise and experience to ensure your project's success.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Item 2 */}
-          <div className="flex gap-6 mt-8">
-            <div className="w-14 h-14 bg-[#101010] rounded-full flex items-center justify-center hover:bg-orange-400 transition duration-300">
-              <FaCheck className="text-orange-400 text-xl hover:text-white" />
-            </div>
+          {/* ================= RIGHT IMAGE ================= */}
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-16 lg:mt-0">
+            <div
+              className="relative 
+      w-80 h-80 
+      sm:w-[420px] sm:h-[420px] 
+   lg:w-[550px] lg:h-[550px] 
+      flex items-center justify-center overflow-hidden"
+            >
+              {/* Rotating Orange Ring */}
+              <img
+                src="/image/c.png"
+                alt="Background Shape"
+                className="absolute w-[200%] h-[200%] object-contain animate-spin [animation-duration:5s]"
+              />
 
-            <div>
-              <h3 className="text-lg sm:text-xl font-extrabold text-white mb-2">
-                Proven Track Record
-              </h3>
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-md">
-                With a successful track record of delivering high-quality
-                projects, we have earned the trust of numerous satisfied
-                clients.
-              </p>
+              {/* Main Oval Image */}
+              <div className="w-[92%] h-[80%] rounded-[50%] overflow-hidden z-10 shadow-2xl">
+                <img
+                  src="/image/man.png"
+                  alt="Professional"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
-          </div>
-
-          {/* Item 3 */}
-          <div className="flex gap-6 mt-8">
-            <div className="w-14 h-14 bg-[#101010] rounded-full flex items-center justify-center hover:bg-orange-400 transition duration-300">
-              <FaCheck className="text-orange-400 text-xl hover:text-white" />
-            </div>
-
-            <div>
-              <h3 className="text-lg sm:text-xl font-extrabold text-white mb-2">
-                Expert Team
-              </h3>
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-md">
-                Our team of seasoned professionals brings a wealth of expertise
-                and experience to ensure your project's success.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* ================= RIGHT IMAGE ================= */}
-        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-          <div className="w-full max-w-md lg:max-w-lg">
-            <img
-              src="/image/man.png"
-              alt="Professional"
-              className="w-full h-auto object-contain"
-            />
           </div>
         </div>
       </div>
 
       {/* cards */}
-      <div className="w-full min-h-screen bg-black py-16 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* 1 */}
-          <div className="overflow-hidden rounded-lg">
-            <img
-              src="/image/ux_1.jpg"
-              alt="UX Design 1"
-              className="w-full h-[300px] object-cover"
-            />
-          </div>
+    <div className="w-full min-h-screen bg-black py-16 px-6">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          {/* 2 */}
-          <div className="overflow-hidden rounded-lg">
-            <img
-              src="/image/ux_2.jpg"
-              alt="UX Design 2"
-              className="w-full h-[300px] object-cover"
-            />
-          </div>
+    {/* Card 1 */}
+    <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+      <img src="/image/ux_1.jpg" alt="UX Design" className="w-full h-[300px] object-cover" />
 
-          {/* 3 */}
-          <div className="overflow-hidden rounded-lg">
-            <img
-              src="/image/ux_3.jpg"
-              alt="UX Design 3"
-              className="w-full h-[300px] object-cover"
-            />
-          </div>
-
-          {/* 4 */}
-          <div className="overflow-hidden rounded-lg">
-            <img
-              src="/image/ux_4.jpg"
-              alt="UX Design 4"
-              className="w-full h-[300px] object-cover"
-            />
-          </div>
+      {/* Orange Circle */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
+          <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
+            UX/UI <br /> Design
+          </p>
         </div>
       </div>
+
+      {/* Black Overlay */}
+      <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
+        <p className="text-white mb-3 text-sm sm:text-base">
+          Enhancing user experiences through research, wireframes, and prototypes, creating visually appealing and user-friendly interfaces.
+        </p>
+        <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+          Read More
+          <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+        </p>
+      </div>
+    </div>
+
+    {/* Card 2 */}
+    <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+      <img src="/image/ux_2.jpg" alt="UX Design 2" className="w-full h-[300px] object-cover" />
+
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
+          <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
+            On Demand <br /> Product <br /> Team
+          </p>
+        </div>
+      </div>
+
+      <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
+        <p className="text-white mb-3 text-sm sm:text-base">
+          Flexible teams for custom software development, scaling, and extending your internal team's capabilities, led by dedicated developers and product owners.
+        </p>
+        <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+          Read More
+          <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+        </p>
+      </div>
+    </div>
+
+    {/* Card 3 */}
+    <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+      <img src="/image/ux_3.jpg" alt="UX Design 3" className="w-full h-[300px] object-cover" />
+
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
+          <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
+            Mobile App <br /> Development
+          </p>
+        </div>
+      </div>
+
+      <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
+        <p className="text-white mb-3 text-sm sm:text-base">
+          Building iOS and Android apps, including cross-platform development using Flutter, tailored for both consumer and enterprise needs.
+        </p>
+        <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+          Read More
+          <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+        </p>
+      </div>
+    </div>
+
+    {/* Card 4 */}
+    <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+      <img src="/image/ux_4.jpg" alt="UX Design 4" className="w-full h-[300px] object-cover" />
+
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
+          <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
+            Web <br /> Development
+          </p>
+        </div>
+      </div>
+
+      <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
+        <p className="text-white mb-3 text-sm sm:text-base">
+          Crafting websites, web applications, and custom software, along with creating web portals for specific business purposes.
+        </p>
+        <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+          Read More
+          <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
 
       <div className="bg-orange-400 p-5 text-white font-semibold  text-xl ">
         <Marquee gradient={false} speed={50} pauseOnHover={true}>
@@ -293,6 +431,8 @@ const page = () => {
           </span>
         </Marquee>
       </div>
+
+      {/*  */}
     </>
   );
 };
