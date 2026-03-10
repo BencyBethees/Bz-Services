@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-   const services = [
+  const services = [
     {
       icon: "/image/1.svg",
       title: "AI Development",
       description:
-        "We provide businesses with cutting-edge AI solutions using machine learning to boost productivity and efficiency.",
+        "By developing AI, we provide businesses with cutting-edge solutions that utilize the power of sophisticated algorithms and machine learning to boost productivity, improve efficiency, and open up new opportunities.",
     },
     {
       icon: "/image/2.svg",
