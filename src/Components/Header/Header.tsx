@@ -26,16 +26,19 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full bg-black z-50">
       <div className="max-w-[1250px] mx-auto px-3 h-[80px] flex items-center justify-between">
-
         {/* Logo */}
-        <img className="w-[150px] h-auto" src="/image/bq.png" alt="logo" />
+        <img
+          className="w-[120px] xl:w-[150px] h-auto"
+          src="/image/bq.png"
+          alt="logo"
+        />
 
         {/* Desktop Navigation */}
-        <ul className="hidden lg:flex ml-7 items-center gap-1 text-[15px] font-bold">
+        <ul className="hidden lg:flex ml-4 xl:ml-7 items-center gap-1 xl:gap-3 text-[13px] xl:text-[14px] font-bold">
           <span className="text-white text-[13px]">•</span>
 
           {navItems.map((item, index) => (
-            <li key={index} className="flex items-center gap-3">
+            <li key={index} className="flex items-center gap-2 xl:gap-3">
               <span className="cursor-pointer hover:text-orange-500 text-white transition">
                 {item.name}
               </span>
@@ -48,21 +51,24 @@ const Header = () => {
         </ul>
 
         {/* Right Section */}
-        <div className="flex items-center gap-6">
-
+        <div className="flex items-center gap-4 xl:gap-6">
           {/* Language Dropdown */}
           <div className="relative">
             <button
               onClick={() => setOpenLang(!openLang)}
-              className="flex items-center gap-2 text-white"
+              className="flex items-center gap-2 text-white text-[13px] xl:text-[14px]"
             >
               <img
                 src={selectedLang.flag}
-                className="w-6 h-6 rounded-full object-cover"
+                className="w-5 h-5 xl:w-6 xl:h-6 rounded-full object-cover"
                 alt="flag"
               />
               {selectedLang.label}
-              {openLang ? <FiChevronUp size={18} /> : <FiChevronDown size={18} />}
+              {openLang ? (
+                <FiChevronUp size={18} />
+              ) : (
+                <FiChevronDown size={18} />
+              )}
             </button>
 
             {openLang && (
@@ -89,7 +95,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Button */}
-          <button className="hidden lg:block border border-white text-white font-bold px-5 py-2 hover:bg-white hover:text-black transition">
+          <button className="hidden lg:block border border-white text-white font-bold px-3 xl:px-5 py-2 text-[13px] xl:text-[14px] hover:bg-white hover:text-black transition">
             Schedule a consultation
           </button>
 
@@ -105,7 +111,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {openMenu && (
-        <div className="lg:hidden bg-black px-6 py-6 space-y-4">
+        <div className="lg:hidden bg-black px-4 py-4 space-y-4">
           {navItems.map((item, index) => (
             <div
               key={index}

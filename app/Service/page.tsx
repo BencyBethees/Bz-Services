@@ -86,12 +86,12 @@ const page = () => {
         </div>
       </div>
       {/* ================= SECOND SECTION ================= */}
-      <div className="bg-black text-white px-6 py-16 sm:py-20 text-center">
+      <div className="bg-black text-white px-6 py-16 sm:py-20 text-center -mt-20">
         <div className="flex justify-center mt-10 sm:mt-16 mb-5">
           <span className="w-1.5 h-1.5 mt-15 bg-orange-400 rounded-full text-2xl"></span>
         </div>
 
-        <p className="uppercase tracking-wider text-sm sm:text-base md:text-base mb-4">
+        <p className="uppercase  text-sm sm:text-base md:text-base mb-4">
           What We Are Offering
         </p>
 
@@ -102,7 +102,7 @@ const page = () => {
       </div>
 
       {/* ================= CARDS ================= */}
-      <div className="w-full bg-black py-16 px-6">
+      <div className="w-full bg-black  px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <div
@@ -290,105 +290,126 @@ const page = () => {
       </div>
 
       {/* cards */}
-     <div className="w-full min-h-screen bg-black py-16 px-6">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+      <div className="w-full min-h-screen bg-black py-16 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+          {/* Card 1 */}
+          <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+            <img
+              src="/image/ux_1.jpg"
+              alt="UX Design"
+              className="w-full h-[300px] object-cover"
+            />
 
-    {/* Card 1 */}
-    <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
-      <img src="/image/ux_1.jpg" alt="UX Design" className="w-full h-[300px] object-cover" />
+            {/* Orange Circle */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
+                <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
+                  UX/UI <br /> Design
+                </p>
+              </div>
+            </div>
 
-      {/* Orange Circle */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
-          <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
-            UX/UI <br /> Design
-          </p>
+            {/* Black Overlay */}
+            <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
+              <p className="text-white mb-3 text-sm sm:text-base">
+                Enhancing user experiences through research, wireframes, and
+                prototypes, creating visually appealing and user-friendly
+                interfaces.
+              </p>
+              <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+                Read More
+                <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+              </p>
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+            <img
+              src="/image/ux_2.jpg"
+              alt="UX Design 2"
+              className="w-full h-[300px] object-cover"
+            />
+
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
+                <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
+                  On Demand <br /> Product <br /> Team
+                </p>
+              </div>
+            </div>
+
+            <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
+              <p className="text-white mb-3 text-sm sm:text-base">
+                Flexible teams for custom software development, scaling, and
+                extending your internal team's capabilities, led by dedicated
+                developers and product owners.
+              </p>
+              <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+                Read More
+                <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+            <img
+              src="/image/ux_3.jpg"
+              alt="UX Design 3"
+              className="w-full h-[300px] object-cover"
+            />
+
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
+                <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
+                  Mobile App <br /> Development
+                </p>
+              </div>
+            </div>
+
+            <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
+              <p className="text-white mb-3 text-sm sm:text-base">
+                Building iOS and Android apps, including cross-platform
+                development using Flutter, tailored for both consumer and
+                enterprise needs.
+              </p>
+              <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+                Read More
+                <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+              </p>
+            </div>
+          </div>
+
+          {/* Card 4 */}
+          <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+            <img
+              src="/image/ux_4.jpg"
+              alt="UX Design 4"
+              className="w-full h-[300px] object-cover"
+            />
+
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
+                <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
+                  Web <br /> Development
+                </p>
+              </div>
+            </div>
+
+            <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
+              <p className="text-white mb-3 text-sm sm:text-base">
+                Crafting websites, web applications, and custom software, along
+                with creating web portals for specific business purposes.
+              </p>
+              <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
+                Read More
+                <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Black Overlay */}
-      <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
-        <p className="text-white mb-3 text-sm sm:text-base">
-          Enhancing user experiences through research, wireframes, and prototypes, creating visually appealing and user-friendly interfaces.
-        </p>
-        <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
-          Read More
-          <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
-        </p>
-      </div>
-    </div>
-
-    {/* Card 2 */}
-    <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
-      <img src="/image/ux_2.jpg" alt="UX Design 2" className="w-full h-[300px] object-cover" />
-
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
-          <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
-            On Demand <br /> Product <br /> Team
-          </p>
-        </div>
-      </div>
-
-      <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
-        <p className="text-white mb-3 text-sm sm:text-base">
-          Flexible teams for custom software development, scaling, and extending your internal team's capabilities, led by dedicated developers and product owners.
-        </p>
-        <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
-          Read More
-          <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
-        </p>
-      </div>
-    </div>
-
-    {/* Card 3 */}
-    <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
-      <img src="/image/ux_3.jpg" alt="UX Design 3" className="w-full h-[300px] object-cover" />
-
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
-          <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
-            Mobile App <br /> Development
-          </p>
-        </div>
-      </div>
-
-      <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
-        <p className="text-white mb-3 text-sm sm:text-base">
-          Building iOS and Android apps, including cross-platform development using Flutter, tailored for both consumer and enterprise needs.
-        </p>
-        <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
-          Read More
-          <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
-        </p>
-      </div>
-    </div>
-
-    {/* Card 4 */}
-    <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
-      <img src="/image/ux_4.jpg" alt="UX Design 4" className="w-full h-[300px] object-cover" />
-
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-56 h-56 rounded-full bg-orange-400/80 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 p-4">
-          <p className="text-white font-extrabold text-2xl sm:text-3xl text-center leading-snug break-words">
-            Web <br /> Development
-          </p>
-        </div>
-      </div>
-
-      <div className="absolute inset-0 bg-black/60 -translate-y-full flex flex-col items-center justify-center text-center p-4 transition-transform duration-500 group-hover:translate-y-0">
-        <p className="text-white mb-3 text-sm sm:text-base">
-          Crafting websites, web applications, and custom software, along with creating web portals for specific business purposes.
-        </p>
-        <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
-          Read More
-          <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
-        </p>
-      </div>
-    </div>
-
-  </div>
-</div>
 
       <div className="bg-orange-400 p-5 text-white font-semibold  text-xl ">
         <Marquee gradient={false} speed={50} pauseOnHover={true}>
