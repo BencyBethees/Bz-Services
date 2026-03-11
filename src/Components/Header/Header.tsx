@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-black z-50">
-      <div className="max-w-[1250px] mx-auto px-3 h-[80px] flex items-center justify-between">
+      <div className="max-w-[1250px] mx-auto px-3 h-[85px] flex items-center justify-between">
         {/* Logo */}
         <img
           className="w-[120px] xl:w-[150px] h-auto"

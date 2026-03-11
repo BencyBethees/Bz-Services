@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import { FaCheck } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
+import { FaChevronUp } from "react-icons/fa";
 
 import { useState } from "react";
 
@@ -15,6 +17,20 @@ interface Service {
 const page = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [atFooter, setAtFooter] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.getElementById("footer");
+      if (footer) {
+        const footerTop = footer.getBoundingClientRect().top;
+        setAtFooter(footerTop <= window.innerHeight);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     fetch("/api/service")
@@ -149,7 +165,7 @@ const page = () => {
       </div>
 
       {/* grid */}
-      <div className="w-full  bg-black py-16 md:py-20 px-6 md:px-10 lg:px-20 overflow-hidden">
+      <div className="w-full bg-black py-16 md:py-20 px-6 md:px-10 lg:px-20 overflow-hidden ">
         <div
           className="max-w-7xl mx-auto 
     flex flex-col 
@@ -166,10 +182,7 @@ const page = () => {
               WHY CHOOSE US
             </p>
 
-            <h2
-              className="mt-3 text-3xl sm:text-4xl lg:text-5xl 
-        font-extrabold text-white leading-tight"
-            >
+            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
               Providing the best
               <br className="hidden sm:block" /> services
             </h2>
@@ -261,23 +274,24 @@ const page = () => {
           </div>
 
           {/* ================= RIGHT IMAGE ================= */}
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-16 lg:mt-0">
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
             <div
               className="relative 
-      w-80 h-80 
-      sm:w-[420px] sm:h-[420px] 
-   lg:w-[550px] lg:h-[550px] 
-      flex items-center justify-center overflow-hidden"
+        w-72 h-72 
+        sm:w-[380px] sm:h-[380px] 
+        md:w-[450px] md:h-[450px] 
+        lg:w-[520px] lg:h-[520px] 
+        flex items-center justify-center"
             >
               {/* Rotating Orange Ring */}
               <img
                 src="/image/c.png"
                 alt="Background Shape"
-                className="absolute w-[200%] h-[200%] object-contain animate-spin [animation-duration:5s]"
+                className="absolute w-[200%] h-[200%] object-contain animate-spin [animation-duration:4s]"
               />
 
               {/* Main Oval Image */}
-              <div className="w-[92%] h-[80%] rounded-[50%] overflow-hidden z-10 shadow-2xl">
+              <div className="w-[85%] h-[79%] rounded-[50%] -ms-10 overflow-hidden z-10 shadow-2xl">
                 <img
                   src="/image/man.png"
                   alt="Professional"
@@ -444,7 +458,25 @@ const page = () => {
         </Marquee>
       </div>
 
-      {/*  */}
+      {/*whp  */}
+      <a
+        href="https://wa.me/1234567890"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-black rounded-full flex items-center justify-center z-50 "
+        style={{ boxShadow: "3px 4px 6px rgba(255, 255, 255, 0.6)" }} // smoky white shadow
+      >
+        <FaWhatsapp className="text-orange-400 text-3xl hover:text-white" />
+      </a>
+
+      {/* up arrow */}
+
+      <a
+        href="#top" // This can scroll to top or wherever you need
+        className={`fixed bottom-30 right-8 w-12 h-12  bg-black rounded-full flex items-center justify-center z-50 transition-transform duration-300 hover:scale-110 ${atFooter ? "border-l-4 border-orange-500" : ""}`}
+      >
+        <FaChevronUp className="text-white text-2xl" />
+      </a>
     </>
   );
 };
