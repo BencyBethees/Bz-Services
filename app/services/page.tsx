@@ -4,36 +4,53 @@ import Marquee from "react-fast-marquee";
 import { FaCheck } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
-import { FaChevronUp } from "react-icons/fa";
-
+import { FaArrowUpLong } from "react-icons/fa6";
 import { useState } from "react";
+import Link from "next/link";
 
 interface Service {
   icon: string;
   title: string;
   description: string;
+  link: string;
 }
 
 const page = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [showArrow, setShowArrow] = useState(false);
   const [atFooter, setAtFooter] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const footer = document.getElementById("footer");
-      if (footer) {
-        const footerTop = footer.getBoundingClientRect().top;
-        setAtFooter(footerTop <= window.innerHeight);
-      }
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      const progress = (scrollTop / docHeight) * 100;
+
+      setScrollProgress(progress);
+      setShowArrow(scrollTop > 200);
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const toggleTheme = () => {
+    document.documentElement.classList.toggle("dark");
+  };
 
   useEffect(() => {
-    fetch("/api/service")
+    fetch("/api/services")
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to fetch services");
@@ -46,31 +63,20 @@ const page = () => {
 
   return (
     <>
-      {/* ================= HERO ================= */}
-      <div className="relative h-screen sm:h-[85vh] md:h-[90vh] lg:h-[100vh] overflow-hidden">
+      {/*HERO*/}
+      <div className="relative  sm:h-[85vh] md:h-[90vh] lg:h-[100vh] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* <div
-    className="
-      w-full h-full
-      bg-[url('/image/bg.jpg')]
-      bg-cover
-      bg-[10%_15%]
-      scale-120
-    "
-  ></div> */}
-
           <div
             className="
-    absolute inset-0
-    w-full h-full
-    opacity-120
-    bg-no-repeat
-    bg-center
-    bg-[length:100]
-      bg-[url('/image/bg.jpg')]
+      absolute inset-0
+      w-full h-full
+      bg-no-repeat
+      bg-center
       bg-cover
-  "
+      bg-[url('/image/bg.jpg')]
+      dark:bg-[url('/image/bg.jpg')]
+    "
           ></div>
         </div>
 
@@ -80,7 +86,7 @@ const page = () => {
         {/* Content */}
         <div
           className="
-      relative z-10 text-white
+      relative z-10 theme-text
       px-6 sm:px-10 md:px-20 lg:px-40
       pt-24 sm:pt-28 md:pt-36 lg:pt-44
       text-left
@@ -101,8 +107,8 @@ const page = () => {
           </h1>
         </div>
       </div>
-      {/* ================= SECOND SECTION ================= */}
-      <div className="bg-black text-white px-6 py-16 sm:py-20 text-center -mt-20">
+      {/*SECOND SECTION  */}
+      <div className="theme-bg theme-text px-6 py-16 sm:py-20 text-center -mt-20">
         <div className="flex justify-center mt-10 sm:mt-16 mb-5">
           <span className="w-1.5 h-1.5 mt-15 bg-orange-400 rounded-full text-2xl"></span>
         </div>
@@ -117,8 +123,8 @@ const page = () => {
         </h1>
       </div>
 
-      {/* ================= CARDS ================= */}
-      <div className="w-full bg-black  px-6">
+      {/*  CARDS */}
+      <div className="w-full theme-bg  px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <div
@@ -152,20 +158,21 @@ const page = () => {
               <hr className="border-gray-600 my-4 sm:my-6" />
 
               {/* Read More */}
-              <p
+              <Link
+                href={service.link}
                 className="flex items-center gap-2 text-sm font-medium cursor-pointer
-            transition-all duration-300 ease-in-out hover:text-orange-400 group"
+  transition-all duration-300 ease-in-out hover:text-orange-400 group"
               >
                 Read More
                 <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
-              </p>
+              </Link>
             </div>
           ))}
         </div>
       </div>
 
       {/* grid */}
-      <div className="w-full bg-black py-16 md:py-20 px-6 md:px-10 lg:px-20 overflow-hidden ">
+      <div className="w-full theme-bg py-16 md:py-20 px-6 md:px-10 lg:px-20 overflow-hidden ">
         <div
           className="max-w-7xl mx-auto 
     flex flex-col 
@@ -182,7 +189,7 @@ const page = () => {
               WHY CHOOSE US
             </p>
 
-            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold theme-text leading-tight">
               Providing the best
               <br className="hidden sm:block" /> services
             </h2>
@@ -195,20 +202,20 @@ const page = () => {
             bg-[#101010] rounded-full 
             flex items-center justify-center 
             transition-all duration-300
-            group-hover:bg-orange-400"
+            group-hover:bg-orange-400 hover:theme-text"
                 >
                   <FaCheck
                     className="text-orange-400 text-lg 
               transition-colors duration-300 
-              group-hover:text-white"
+            hover:text-white"
                   />
                 </div>
 
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold theme-text mb-2">
                     Innovative Approach
                   </h3>
-                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                  <p className="theme-text text-sm sm:text-base leading-relaxed">
                     Our company stands out for its innovative thinking, offering
                     fresh perspectives and creative solutions to meet your
                     unique needs.
@@ -223,20 +230,20 @@ const page = () => {
             bg-[#101010] rounded-full 
             flex items-center justify-center 
             transition-all duration-300
-            group-hover:bg-orange-400"
+           group-hover:bg-orange-400"
                 >
                   <FaCheck
                     className="text-orange-400 text-lg 
               transition-colors duration-300 
-              group-hover:text-white"
+            hover:text-white "
                   />
                 </div>
 
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold theme-text mb-2">
                     Proven Track Record
                   </h3>
-                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                  <p className="text-gray-500 theme-text text-sm sm:text-base leading-relaxed">
                     With a successful track record of delivering high-quality
                     projects, we have earned the trust of numerous satisfied
                     clients.
@@ -256,15 +263,15 @@ const page = () => {
                   <FaCheck
                     className="text-orange-400 text-lg 
               transition-colors duration-300 
-              group-hover:text-white"
+              hover:text-white"
                   />
                 </div>
 
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold theme-text mb-2">
                     Expert Team
                   </h3>
-                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                  <p className="text-gray-500 theme-text text-sm sm:text-base leading-relaxed">
                     Our team of seasoned professionals brings a wealth of
                     expertise and experience to ensure your project's success.
                   </p>
@@ -304,7 +311,12 @@ const page = () => {
       </div>
 
       {/* cards */}
-      <div className="w-full min-h-screen bg-black py-16 px-6">
+      <div
+        className="w-full min-h-screen theme-bg
+  py-12 sm:py-14 md:py-16
+  px-4 sm:px-6 md:px-8
+  mb-0 sm:-mb-[30px] md:-mb-[30px] lg:-mb-[30px]"
+      >
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
           {/* Card 1 */}
           <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
@@ -418,14 +430,15 @@ const page = () => {
               </p>
               <p className="flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-300 ease-in-out text-white hover:text-orange-400 group">
                 Read More
-                <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
+                <FaArrowRight className="transition-transform duration-300 text-white ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-orange-400 p-5 text-white font-semibold  text-xl ">
+      {/* marquee */}
+      <div className="bg-orange-400 p-5  font-semibold text-white text-xl ">
         <Marquee gradient={false} speed={50} pauseOnHover={true}>
           <span className="mr-10 tracking-wider">
             UNLOCKING YOUR FULL POTENTIAL
@@ -466,17 +479,38 @@ const page = () => {
         className="fixed bottom-6 right-6 w-16 h-16 bg-black rounded-full flex items-center justify-center z-50 "
         style={{ boxShadow: "3px 4px 6px rgba(255, 255, 255, 0.6)" }} // smoky white shadow
       >
-        <FaWhatsapp className="text-orange-400 text-3xl hover:text-white" />
+        <FaWhatsapp className="text-orange-400 text-3xl hover:theme-text" />
       </a>
 
       {/* up arrow */}
-
-      <a
-        href="#top" // This can scroll to top or wherever you need
-        className={`fixed bottom-30 right-8 w-12 h-12  bg-black rounded-full flex items-center justify-center z-50 transition-transform duration-300 hover:scale-110 ${atFooter ? "border-l-4 border-orange-500" : ""}`}
-      >
-        <FaChevronUp className="text-white text-2xl" />
-      </a>
+      {showArrow && (
+        <button
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })
+          }
+          className="fixed bottom-25 right-6 w-16 h-16 rounded-full flex items-center justify-center z-50"
+          style={{
+            background: `conic-gradient(
+    from 0deg,
+    orange ${scrollProgress}%,
+    #000 ${scrollProgress}%
+  )`,
+            padding: "3px",
+          }}
+        >
+          <div
+            className="w-full h-full bg-black rounded-full flex items-center justify-center"
+            style={{
+              border: scrollProgress >= 99 ? "2px solid orange-400" : "none",
+            }}
+          >
+            <FaArrowUpLong className="text-orange-400 text-xl" />
+          </div>
+        </button>
+      )}
     </>
   );
 };

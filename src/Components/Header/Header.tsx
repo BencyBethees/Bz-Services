@@ -48,11 +48,8 @@ const Header = () => {
               )}
             </li>
           ))}
-        </ul>
 
-        {/* Right Section */}
-        <div className="flex items-center gap-4 xl:gap-6">
-          {/* Language Dropdown */}
+          {/*  */}
           <div className="relative">
             <button
               onClick={() => setOpenLang(!openLang)}
@@ -93,11 +90,34 @@ const Header = () => {
               </div>
             )}
           </div>
+        </ul>
+
+        {/* Right Section */}
+        <div className="flex items-center gap-4 xl:gap-6">
+          {/* Language Dropdown */}
 
           {/* Desktop Button */}
-          <button className="hidden lg:block border border-white text-white font-bold px-3 xl:px-5 py-2 text-[13px] xl:text-[14px] hover:bg-white hover:text-black transition">
-            Schedule a consultation
-          </button>
+       <button
+  className="hidden lg:block relative overflow-hidden 
+  border border-white text-white font-bold 
+  px-3 xl:px-5 py-2 text-[13px] xl:text-[14px]
+  group transition"
+>
+  
+  {/* Hover background animation */}
+  <span
+    className="absolute top-1/2 left-1/2 w-[400%]  h-[400%] bg-white
+    -translate-x-1/2 -translate-y-1/2 rotate-45
+    scale-0 group-hover:scale-110
+    transition-transform duration-500 ease-out"
+  ></span>
+
+  {/* Button text */}
+  <span className="relative z-10 group-hover:text-orange-400 text-[15px] transition-colors duration-300">
+    Schedule a consultation
+  </span>
+
+</button>
 
           {/* Mobile Menu Button */}
           <button

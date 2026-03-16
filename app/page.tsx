@@ -1,14 +1,10 @@
 import React from "react";
-import Service from "./Service/page"
-import Footer from "@/src/Components/Footer/Footer";
-import Header from "@/src/Components/Header/Header";
+import Service from "./services/page";
 
 const page = () => {
   return (
     <div>
-      <Header />
-      <Service/>
-      <Footer/>
+      <Service />
     </div>
   );
 };

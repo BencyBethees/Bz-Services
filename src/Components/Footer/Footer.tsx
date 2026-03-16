@@ -26,27 +26,19 @@ const Footer = () => {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const validateEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
+  const validateEmail = (email: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
-    if (!email) {
-      setError("Email is required");
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      setError("Please enter a valid email address");
-      return;
-    }
+    if (!email) return setError("Email is required");
+    if (!validateEmail(email))
+      return setError("Please enter a valid email address");
 
     setLoading(true);
-
     setTimeout(() => {
       setLoading(false);
       setSuccess("Subscribed successfully!");
@@ -55,8 +47,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative w-full bg-black text-white overflow-hidden min-h-[582px]">
-
+    <footer
+      className="relative w-full bg-[#131313] text-white overflow-hidden min-h-[582px]"
+      id="footer"
+    >
       {/* Background Lines */}
       <div
         className="absolute inset-x-0 -top-32 -bottom-32 bg-no-repeat pointer-events-none"
@@ -64,13 +58,12 @@ const Footer = () => {
           backgroundImage: "url('/image/footer.png')",
           backgroundSize: "1894px 690px",
           backgroundPosition: "-500px center",
-          filter: "brightness(1.7) contrast(2.5)",
+          filter: "brightness(1.0) contrast(1.5)",
         }}
       />
 
       {/* Footer Content */}
-      <div className="relative max-w-[1375px] mx-auto px-6 md:px-9 py-12 lg:py-16">
-
+      <div className="relative max-w-[1375px] mx-auto px-4 sm:px-6 md:px-9 py-12 lg:py-16">
         {/* Top Section */}
         <div className="text-center lg:text-left">
           <p className="text-[18px] md:text-[22px] font-medium text-gray-300">
@@ -83,14 +76,12 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <hr className="my-8 md:my-10 w-200 border-t border-gray-700/60" />
+        <hr className="my-8 md:my-10 w-220 border-t border-gray-700/60" />
 
         {/* Grid Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
           {/* Logo + Social */}
           <div className="flex flex-col items-center lg:items-start space-y-8">
-
             <img
               src="/image/bq.png"
               alt="logo"
@@ -108,12 +99,10 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-
           </div>
 
           {/* Menu */}
-          <div className="grid grid-cols-2 gap-8 text-center lg:text-left">
-
+          <div className="grid grid-cols-2 gap-8 text-center lg:text-left justify-center lg:justify-start">
             <div className="space-y-4">
               {menuColumn1.map((item, index) => (
                 <p
@@ -135,45 +124,45 @@ const Footer = () => {
                 </p>
               ))}
             </div>
-
           </div>
 
           {/* Subscribe */}
           <div
-            className="bg-[#0000004D] p-6 md:p-8 rounded-xl space-y-6
-            w-full max-w-sm md:max-w-md mx-auto
-            mt-10 lg:-mt-50"
+            className="bg-black p-6 md:p-8 rounded-xl
+             w-[299px] h-[404px] mx-auto
+             mt-10 lg:-mt-50 lg:-me-2
+             max-[321px]:w-[260px] 
+             max-[321px]:p-4 
+             max-[321px]:h-auto"
           >
-
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center lg:justify-start items-center">
               <img
                 src="/image/logof.png"
                 alt="subscribe"
-                className="w-24 sm:w-28 md:w-32 lg:w-36 h-auto object-contain"
+                className="w-24 h-auto object-contain max-[321px]:w-20"
               />
             </div>
 
-            <h3 className="text-[19px] font-semibold text-center lg:text-left">
+            <h3 className="text-[19px] font-semibold text-center lg:text-left mt-4 max-[321px]:text-[17px]">
               Subscribe now
             </h3>
 
-            <p className="text-gray-400 text-[15px] text-center lg:text-left">
+            <p className="text-gray-400 text-[15px] text-center lg:text-left max-[321px]:text-[13px]">
               Empower Every Mind
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4 mt-4 max-[321px]:space-y-3"
+            >
               <input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className={`w-full bg-black px-4 py-3 rounded-md border outline-none transition
-                ${
-                  error
-                    ? "border-red-500"
-                    : "border-gray-700 focus:border-orange-400"
-                }`}
+      max-[321px]:px-3 max-[321px]:py-2
+      ${error ? "border-red-500" : "border-gray-700 focus:border-orange-400"}`}
               />
 
               {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -182,15 +171,12 @@ const Footer = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-orange-400 py-3 rounded-md hover:bg-white hover:text-orange-400 transition font-medium disabled:opacity-50"
+                className="w-full bg-orange-400 py-3 rounded-md hover:bg-white hover:text-orange-400 transition font-medium disabled:opacity-50 max-[321px]:py-2"
               >
                 {loading ? "Submitting..." : "Submit"}
               </button>
-
             </form>
-
           </div>
-
         </div>
       </div>
     </footer>
