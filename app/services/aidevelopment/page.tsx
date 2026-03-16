@@ -104,19 +104,19 @@ const page = () => {
       </div>
 
       {/* 2 */}
-      <div className="theme-bg py-20 px-6">
+      <div className="theme-bg py-10 px-5">
         <div className="theme-bg theme-text px-6 py-16 sm:py-20 text-left mx-auto flex flex-col lg:flex-row gap-10 items-start max-w-7xl">
           {/* LEFT: Services List */}
           <div className="p-7 bg-[#101010] w-full lg:w-1/3 order-1">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="flex justify-between bg-black px-4 py-4 mb-3"
+                className="flex justify-between bg-black px-4 py-4 mb-3 group cursor-pointer"
               >
                 <h3 className="text-[#eaeaea] text-[16px] font-semibold">
                   {service}
                 </h3>
-                <span className="w-1.5 h-1.5 mt-2 bg-white rounded-full"></span>
+                <span className="w-1.5 h-1.5 mt-2 bg-white rounded-full group-hover:bg-orange-400 transition-colors duration-300"></span>
               </div>
             ))}
           </div>
