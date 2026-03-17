@@ -25,9 +25,7 @@ export default function RootLayout({
       <body className={`${plusJakarta.className} antialiased`}>
         <ThemeWrapper>
           <Header />
-
           {children}
-
           <Footer />
         </ThemeWrapper>
       </body>

@@ -133,7 +133,7 @@ const page = () => {
             </div>
 
             {/* Description Text */}
-            <div className="mt-6 text-[#EAEAEA] order-2">
+            <div className="mt-6 theme-text order-2">
               <h1 className="font-bold text-[30px]">AI Development</h1>
               <p className="mt-5 leading-loose text-[16px]">
                 By developing AI, we provide businesses with cutting-edge

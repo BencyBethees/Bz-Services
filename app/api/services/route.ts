@@ -67,7 +67,7 @@ export async function GET() {
       link: "/services/web-development",
 
       icon: "/image/9.svg",
-      title: "Web Design and Development Solution",
+      title: "Web Design  and Development Solution",
       description:
         "Our dedicated team of web design and development experts creates stunning and user-centric websites, tailored to your unique brand identity and optimized for seamless functionality across platforms, empowering your business to make a lasting impact in the digital landscape.",
     },
@@ -91,7 +91,7 @@ export async function GET() {
       link: "/services/web-development",
 
       icon: "/image/12.1.svg",
-      title: "Geographic Information System(GIS)Application",
+      title: "Geographic Information System (GIS) Application",
       description:
         "We harness the power of Geographic Information System (GIS) applications to provide businesses with advanced mapping, spatial analysis, and data visualization solutions, enabling them to make informed decisions, optimize operations, and gain valuable insights from location-based data.",
     },

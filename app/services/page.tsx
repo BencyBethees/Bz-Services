@@ -75,7 +75,7 @@ const page = () => {
       bg-center
       bg-cover
       bg-[url('/image/bg.jpg')]
-      dark:bg-[url('/image/bg.jpg')]
+     
     "
           ></div>
         </div>
@@ -123,45 +123,45 @@ const page = () => {
         </h1>
       </div>
 
-      {/* ================= CARDS */}
+      {/*  CARDS */}
       <div className="w-full theme-bg  px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {services.map((service, index) => (
+        <div className="max-w-7xl mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {services?.map((service, index) => (
             <div
               key={index}
               className="bg-[#101010] text-[#EAEAEA]
-          w-full p-6 sm:p-8
-          text-left
-          border border-transparent
-          hover:border-white
-          transition-all duration-300
-          rounded-lg
-          flex flex-col justify-between"
+  w-full p-8 sm:p-10
+  text-left
+  border border-transparent
+  hover:border-white
+  transition-all duration-300
+  flex flex-col gap-6"
             >
               {/* Icon */}
               <img
                 src={service.icon}
                 alt={service.title}
-                className="mb-4 sm:mb-6 w-12 sm:w-16 h-12 sm:h-16 object-contain"
+                className="w-12 sm:w-16 h-12 sm:h-16 object-contain"
               />
 
               {/* Title */}
-              <h3 className="text-lg sm:text-xl font-semibold hover:text-orange-400 cursor-pointer mb-3 sm:mb-4">
+              <h3 className="text-xl sm:text-xl font-bold hover:text-orange-400 cursor-pointer">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-xs sm:text-sm leading-5 sm:leading-6 mb-4 sm:mb-6">
+              <p className="text-base lg:text-sm leading-6 lg:leading-6 font-semibold text-[#CFCFCF]">
                 {service.description}
               </p>
 
-              <hr className="border-gray-600 my-4 sm:my-6" />
+              {/* Line */}
+              <hr className="border-gray-600" />
 
               {/* Read More */}
               <Link
                 href={service.link}
-                className="flex items-center gap-2 text-sm font-medium cursor-pointer
-  transition-all duration-300 ease-in-out hover:text-orange-400 group"
+                className="flex items-center gap-2 text-sm font-medium
+    transition-all duration-300 ease-in-out hover:text-orange-400 group"
               >
                 Read More
                 <FaArrowRight className="transition-transform duration-300 ease-in-out rotate-[45deg] group-hover:rotate-[0deg]" />

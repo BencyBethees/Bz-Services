@@ -37,3 +37,35 @@ body.light {
   background-color: white;
   color: black;
 }
+
+/* Theme button */
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 1.5rem; /* bottom-6 */
+  left: 0.5rem; /* left-2 */
+  padding: 0.5rem 1rem; /* px-3 py-2 */
+  font-weight: bold;
+  border: 2px solid white;
+
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  color: orange;
+  background-color: white;
+  border-color: black;
+}
+
+/* Dark mode overrides */
+.dark .theme-toggle-btn {
+  background-color: black;
+  color: white;
+  border-color: white;
+}

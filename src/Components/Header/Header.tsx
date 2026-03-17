@@ -1,6 +1,7 @@
 "use client";
 import { FiChevronUp, FiChevronDown, FiMenu, FiX } from "react-icons/fi";
 import React, { useState } from "react";
+import Link from "next/link"; // import Link for navigation
 
 const navItems = [
   { name: "Home" },
@@ -39,9 +40,18 @@ const Header = () => {
 
           {navItems.map((item, index) => (
             <li key={index} className="flex items-center gap-2 xl:gap-3">
-              <span className="cursor-pointer hover:text-orange-500 text-white transition">
+              <Link
+                href={
+                  item.name === "Home"
+                    ? "/"
+                    : item.name === "Services"
+                    ? "/services"
+                    : "#"
+                }
+                className="cursor-pointer hover:text-orange-500 text-white transition"
+              >
                 {item.name}
-              </span>
+              </Link>
 
               {index !== navItems.length - 1 && (
                 <span className="text-white text-[13px]">•</span>
@@ -49,7 +59,7 @@ const Header = () => {
             </li>
           ))}
 
-          {/*  */}
+          {/* Language Dropdown */}
           <div className="relative">
             <button
               onClick={() => setOpenLang(!openLang)}
@@ -61,15 +71,11 @@ const Header = () => {
                 alt="flag"
               />
               {selectedLang.label}
-              {openLang ? (
-                <FiChevronUp size={18} />
-              ) : (
-                <FiChevronDown size={18} />
-              )}
+              {openLang ? <FiChevronUp size={18} /> : <FiChevronDown size={18} />}
             </button>
 
             {openLang && (
-              <div className="absolute right-0 mt-3 bg-black border border-gray-700 rounded-md shadow-lg w-[120px] z-50">
+              <div className="absolute right-0 mt-3 bg-black rounded-md shadow-lg w-[120px] z-50">
                 {languages.map((lang) => (
                   <div
                     key={lang.code}
@@ -94,30 +100,26 @@ const Header = () => {
 
         {/* Right Section */}
         <div className="flex items-center gap-4 xl:gap-6">
-          {/* Language Dropdown */}
-
           {/* Desktop Button */}
-       <button
-  className="hidden lg:block relative overflow-hidden 
-  border border-white text-white font-bold 
-  px-3 xl:px-5 py-2 text-[13px] xl:text-[14px]
-  group transition"
->
-  
-  {/* Hover background animation */}
-  <span
-    className="absolute top-1/2 left-1/2 w-[400%]  h-[400%] bg-white
-    -translate-x-1/2 -translate-y-1/2 rotate-45
-    scale-0 group-hover:scale-110
-    transition-transform duration-500 ease-out"
-  ></span>
+          <button
+            className="hidden lg:block relative overflow-hidden 
+            border border-white text-white font-bold 
+            px-3 xl:px-5 py-2 text-[13px] xl:text-[14px]
+            group transition"
+          >
+            {/* Hover background animation */}
+            <span
+              className="absolute top-1/2 left-1/2 w-[400%]  h-[400%] bg-white
+              -translate-x-1/2 -translate-y-1/2 rotate-45
+              scale-0 group-hover:scale-110
+              transition-transform duration-500 ease-out"
+            ></span>
 
-  {/* Button text */}
-  <span className="relative z-10 group-hover:text-orange-400 text-[15px] transition-colors duration-300">
-    Schedule a consultation
-  </span>
-
-</button>
+            {/* Button text */}
+            <span className="relative z-10 group-hover:text-orange-400 text-[15px] transition-colors duration-300">
+              Schedule a consultation
+            </span>
+          </button>
 
           {/* Mobile Menu Button */}
           <button
@@ -133,12 +135,19 @@ const Header = () => {
       {openMenu && (
         <div className="lg:hidden bg-black px-4 py-4 space-y-4">
           {navItems.map((item, index) => (
-            <div
+            <Link
               key={index}
-              className="text-white border-b border-gray-700 pb-3 cursor-pointer hover:text-orange-500"
+              href={
+                item.name === "Home"
+                  ? "/"
+                  : item.name === "Services"
+                  ? "/services"
+                  : "#"
+              }
+              className="block text-white  pb-3 cursor-pointer hover:text-orange-500"
             >
               {item.name}
-            </div>
+            </Link>
           ))}
 
           <button className="w-full mt-4 border border-white text-white font-bold px-5 py-2 hover:bg-white hover:text-black transition">
