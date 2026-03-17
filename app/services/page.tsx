@@ -319,7 +319,7 @@ const page = () => {
       >
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
           {/* Card 1 */}
-          <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+          <div className="relative w-full max-w-sm overflow-hidden shadow-lg group cursor-pointer">
             <img
               src="/image/ux_1.jpg"
               alt="UX Design"
@@ -350,7 +350,7 @@ const page = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+          <div className="relative w-full max-w-sm  overflow-hidden shadow-lg group cursor-pointer">
             <img
               src="/image/ux_2.jpg"
               alt="UX Design 2"
@@ -379,7 +379,7 @@ const page = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+          <div className="relative w-full max-w-sm overflow-hidden shadow-lg group cursor-pointer">
             <img
               src="/image/ux_3.jpg"
               alt="UX Design 3"
@@ -408,7 +408,7 @@ const page = () => {
           </div>
 
           {/* Card 4 */}
-          <div className="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg group cursor-pointer">
+          <div className="relative w-full max-w-sm overflow-hidden shadow-lg group cursor-pointer">
             <img
               src="/image/ux_4.jpg"
               alt="UX Design 4"
