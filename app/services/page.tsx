@@ -93,16 +93,16 @@ const page = () => {
     "
         >
           {/* Breadcrumb */}
-          <div className="mb-5 md:mt-15 text-sm sm:text-base md:text-lg lg:text-xl lg:-ml-[110px]">
+          <div className="mb-5 md:mt-[60px] text-[12px] font-semibold sm:text-sm md:text-base lg:text-base lg:-ml-[110px] flex items-center gap-2">
             <span className="hover:text-orange-400 cursor-pointer">Home</span>
-            <span className="mx-2">.</span>
-            <span className="hover:text-orange-400 cursor-pointer -mt-3">
+            <span className="inline-block mt-2 w-1 h-1 bg-white rounded-full lg:w-0.5 lg:h-0.5"></span>
+            <span className="hover:text-orange-400 cursor-pointer">
               Services
             </span>
           </div>
 
           {/* Hero Heading */}
-          <h1 className="text-4xl sm:text-2xl sm:font-bold md:text-5xl lg:text-6xl font-extrabold lg:-ml-[110px]">
+          <h1 className="mt-4 sm:mt-6 md:mt-8 lg:mt-5 text-4xl sm:text-2xl md:text-5xl lg:text-[60px] font-extrabold lg:-ml-[110px]">
             Services
           </h1>
         </div>
@@ -125,7 +125,7 @@ const page = () => {
 
       {/*  CARDS */}
       <div className="w-full theme-bg  px-6">
-        <div className="max-w-7xl mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="max-w-7xl mx-5 my-5 -mt-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {services?.map((service, index) => (
             <div
               key={index}
@@ -437,8 +437,8 @@ const page = () => {
         </div>
       </div>
 
-      {/* marquee */}
-      <div className="bg-orange-400 p-5  font-semibold text-white text-xl ">
+      {/* marrrrr */}
+   <div className="bg-orange-400 p-5  font-semibold text-white text-xl ">
         <Marquee gradient={false} speed={50} pauseOnHover={true}>
           <span className="mr-10 tracking-wider">
             UNLOCKING YOUR FULL POTENTIAL
@@ -470,6 +470,7 @@ const page = () => {
           </span>
         </Marquee>
       </div>
+
 
       {/*whp  */}
       <a
