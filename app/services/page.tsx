@@ -64,13 +64,13 @@ const page = () => {
   return (
     <>
       {/*HERO*/}
-      <div className="relative  sm:h-[85vh] md:h-[90vh] lg:h-[100vh] overflow-hidden">
+      <div className="relative  sm:h-[85vh] md:h-[90vh] lg:h-[93vh] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
           <div
             className="
       absolute inset-0
-      w-full h-full
+      w-full 
       bg-no-repeat
       bg-center
       bg-cover
@@ -81,7 +81,13 @@ const page = () => {
         </div>
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#646060] via-black/60 to-black"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#646060] via-black/60 to-black"></div> 1 */}
+
+        <div className="absolute inset-0 
+    bg-gradient-to-b 
+    from-white/60 via-white/50 to-white/70 
+    dark:from-black/70 dark:via-black/60 dark:to-black">
+</div>
 
         {/* Content */}
         <div
@@ -93,10 +99,12 @@ const page = () => {
     "
         >
           {/* Breadcrumb */}
-          <div className="mb-5 md:mt-[60px] text-[12px] font-semibold sm:text-sm md:text-base lg:text-base lg:-ml-[110px] flex items-center gap-2">
-            <span className="hover:text-orange-400 cursor-pointer">Home</span>
-            <span className="inline-block mt-2 w-1 h-1 bg-white rounded-full lg:w-0.5 lg:h-0.5"></span>
-            <span className="hover:text-orange-400 cursor-pointer">
+          <div className="mb-5 md:mt-[60px] mt-6 text-[12px] font-semibold sm:text-sm md:text-base lg:text-base lg:-ml-[110px] flex items-center gap-2">
+            <span className="hover:text-orange-400 mt-6 cursor-pointer">
+              Home
+            </span>
+            <span className="inline-block mt-2 w-1 h-1 bg-white rounded-full mt-6 lg:w-0.5 lg:h-0.5"></span>
+            <span className="hover:text-orange-400 mt-6 cursor-pointer">
               Services
             </span>
           </div>
@@ -108,16 +116,16 @@ const page = () => {
         </div>
       </div>
       {/*SECOND SECTION  */}
-      <div className="theme-bg theme-text px-6 py-16 sm:py-20 text-center -mt-20">
-        <div className="flex justify-center mt-10 sm:mt-16 mb-5">
-          <span className="w-1.5 h-1.5 mt-15 bg-orange-400 rounded-full text-2xl"></span>
+      <div className="theme-bg theme-text px-6 py-16 sm:py-10 text-center mt-12 sm:mt-0 md:-mt-10 md:mb-12">
+        <div className="flex justify-center mt-10 sm:mt-16 ">
+          <span className="w-2 h-2 -mt-5 bg-orange-400 rounded-full text-2xl"></span>
         </div>
 
-        <p className="uppercase  text-sm sm:text-base md:text-base mb-4">
-          What We Are Offering
+        <p className="uppercase text-xs sm:text-sm md:text-sm mb-2">
+          What We're Offering
         </p>
 
-        <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold leading-snug">
+        <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-[46px] font-extrabold leading-12">
           Services we're providing <br />
           to our customers
         </h1>
@@ -125,7 +133,7 @@ const page = () => {
 
       {/*  CARDS */}
       <div className="w-full theme-bg  px-6">
-        <div className="max-w-7xl mx-5 my-5 -mt-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="max-w-7xl mx-5 my-5 -mt-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 ">
           {services?.map((service, index) => (
             <div
               key={index}
@@ -312,10 +320,11 @@ const page = () => {
 
       {/* cards */}
       <div
-        className="w-full min-h-screen theme-bg
-  py-12 sm:py-14 md:py-16
-  px-4 sm:px-6 md:px-8
-  mb-0 sm:-mb-[30px] md:-mb-[30px] lg:-mb-[30px]"
+        className="w-full  theme-bg
+py-12 sm:py-14 md:py-16
+px-4 sm:px-6 md:px-8
+mb-0 md:-mb-[30px]  lg:mb-[30px]
+"
       >
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
           {/* Card 1 */}
@@ -438,7 +447,7 @@ const page = () => {
       </div>
 
       {/* marrrrr */}
-   <div className="bg-orange-400 p-5  font-semibold text-white text-xl ">
+      <div className="bg-orange-400 p-5  font-semibold text-white text-xl ">
         <Marquee gradient={false} speed={50} pauseOnHover={true}>
           <span className="mr-10 tracking-wider">
             UNLOCKING YOUR FULL POTENTIAL
@@ -470,7 +479,6 @@ const page = () => {
           </span>
         </Marquee>
       </div>
-
 
       {/*whp  */}
       <a

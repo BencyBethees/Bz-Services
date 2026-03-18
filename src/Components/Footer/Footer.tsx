@@ -58,7 +58,7 @@ const Footer = () => {
           backgroundImage: "url('/image/footer.png')",
           backgroundSize: "1894px 690px",
           backgroundPosition: "-500px center",
-          filter: "brightness(1.0) contrast(1.5)",
+          filter: "brightness(1.3) contrast(2)",
         }}
       />
 
@@ -139,7 +139,7 @@ const Footer = () => {
               <img
                 src="/image/logof.png"
                 alt="subscribe"
-                className="w-24 h-auto object-contain max-[321px]:w-20"
+                className="w-34 ms-15  h-auto object-contain max-[321px]:w-20"
               />
             </div>
 
@@ -147,22 +147,22 @@ const Footer = () => {
               Subscribe now
             </h3>
 
-            <p className="text-gray-400 text-[15px] text-center lg:text-left max-[321px]:text-[13px]">
+            <p className="text-white mt-4 text-[14px] text-center lg:text-left max-[321px]:text-[13px]">
               Empower Every Mind
             </p>
 
             <form
               onSubmit={handleSubmit}
-              className="space-y-4 mt-4 max-[321px]:space-y-3"
+              className="space-y-4 mt-4 max-[321px]:space-y-4"
             >
               <input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className={`w-full bg-black px-4 py-3 rounded-md border outline-none transition
+                className={`w-full bg-black px-4 py-3  outline-none 
       max-[321px]:px-3 max-[321px]:py-2
-      ${error ? "border-red-500" : "border-gray-700 focus:border-orange-400"}`}
+      ${error ? "border-red-500" : " focus:border-orange-400"}`}
               />
 
               {error && <p className="text-red-500 text-sm">{error}</p>}
