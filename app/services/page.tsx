@@ -17,9 +17,9 @@ interface Service {
 
 const page = () => {
   const [services, setServices] = useState<Service[]>([]);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   const [showArrow, setShowArrow] = useState(false);
-  const [atFooter, setAtFooter] = useState(false);
+
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -45,10 +45,6 @@ const page = () => {
     });
   };
 
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle("dark");
-  };
-
   useEffect(() => {
     fetch("/api/services")
       .then((res) => {
@@ -64,13 +60,13 @@ const page = () => {
   return (
     <>
       {/*HERO*/}
-      <div className="relative  sm:h-[85vh] md:h-[90vh] lg:h-[93vh] overflow-hidden">
+      <div className="relative  sm:h-[85vh] md:h-[90vh] lg:h-[100vh] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
           <div
             className="
       absolute inset-0
-      w-full 
+      w-full h-full
       bg-no-repeat
       bg-center
       bg-cover
@@ -81,30 +77,24 @@ const page = () => {
         </div>
 
         {/* Overlay */}
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#646060] via-black/60 to-black"></div> 1 */}
-
-        <div className="absolute inset-0 
-    bg-gradient-to-b 
-    from-white/60 via-white/50 to-white/70 
-    dark:from-black/70 dark:via-black/60 dark:to-black">
-</div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#646060] via-black/60 to-black"></div>
 
         {/* Content */}
         <div
           className="
-      relative z-10 theme-text
+      relative z-10 text-white
       px-6 sm:px-10 md:px-20 lg:px-40
       pt-24 sm:pt-28 md:pt-36 lg:pt-44
       text-left
     "
         >
           {/* Breadcrumb */}
-          <div className="mb-5 md:mt-[60px] mt-6 text-[12px] font-semibold sm:text-sm md:text-base lg:text-base lg:-ml-[110px] flex items-center gap-2">
-            <span className="hover:text-orange-400 mt-6 cursor-pointer">
+          <div className="mb-5 md:mt-[0px] mt-6 text-[12px] font-semibold sm:text-sm md:text-base lg:text-base lg:-ml-[110px] flex items-center gap-2">
+            <span className="hover:text-orange-400 mt-16 cursor-pointer">
               Home
             </span>
-            <span className="inline-block mt-2 w-1 h-1 bg-white rounded-full mt-6 lg:w-0.5 lg:h-0.5"></span>
-            <span className="hover:text-orange-400 mt-6 cursor-pointer">
+            <span className="inline-block mt-2 w-1 h-1 bg-white rounded-full mt-16 lg:w-0.5 lg:h-0.5"></span>
+            <span className="hover:text-orange-400 mt-16 cursor-pointer">
               Services
             </span>
           </div>
@@ -116,7 +106,7 @@ const page = () => {
         </div>
       </div>
       {/*SECOND SECTION  */}
-      <div className="theme-bg theme-text px-6 py-16 sm:py-10 text-center mt-12 sm:mt-0 md:-mt-10 md:mb-12">
+      <div className="bg-black text-white  px-6 py-16 sm:py-10 text-center  sm:mt-0 md:-mt-10 md:mb-12">
         <div className="flex justify-center mt-10 sm:mt-16 ">
           <span className="w-2 h-2 -mt-5 bg-orange-400 rounded-full text-2xl"></span>
         </div>
@@ -132,7 +122,7 @@ const page = () => {
       </div>
 
       {/*  CARDS */}
-      <div className="w-full theme-bg  px-6">
+      <div className="w-full  bg-black lg:-mt-12 md:-mt-12 px-6">
         <div className="max-w-7xl mx-5 my-5 -mt-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 ">
           {services?.map((service, index) => (
             <div
@@ -180,7 +170,7 @@ const page = () => {
       </div>
 
       {/* grid */}
-      <div className="w-full theme-bg py-16 md:py-20 px-6 md:px-10 lg:px-20 overflow-hidden ">
+      <div className="w-full md:-mt-13 sm:-mt-10 -mt-10  lg:-mt-5 bg-black py-16 md:py-20 px-6 md:px-10 lg:px-20 overflow-hidden ">
         <div
           className="max-w-7xl mx-auto 
     flex flex-col 
@@ -197,7 +187,7 @@ const page = () => {
               WHY CHOOSE US
             </p>
 
-            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold theme-text leading-tight">
+            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
               Providing the best
               <br className="hidden sm:block" /> services
             </h2>
@@ -210,7 +200,7 @@ const page = () => {
             bg-[#101010] rounded-full 
             flex items-center justify-center 
             transition-all duration-300
-            group-hover:bg-orange-400 hover:theme-text"
+            group-hover:bg-orange-400 hover:text-white"
                 >
                   <FaCheck
                     className="text-orange-400 text-lg 
@@ -220,10 +210,10 @@ const page = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold theme-text mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
                     Innovative Approach
                   </h3>
-                  <p className="theme-text text-sm sm:text-base leading-relaxed">
+                  <p className="text-white text-sm sm:text-base leading-relaxed">
                     Our company stands out for its innovative thinking, offering
                     fresh perspectives and creative solutions to meet your
                     unique needs.
@@ -248,10 +238,10 @@ const page = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold theme-text mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
                     Proven Track Record
                   </h3>
-                  <p className="text-gray-500 theme-text text-sm sm:text-base leading-relaxed">
+                  <p className="text-gray-500 text-white text-sm sm:text-base leading-relaxed">
                     With a successful track record of delivering high-quality
                     projects, we have earned the trust of numerous satisfied
                     clients.
@@ -276,10 +266,10 @@ const page = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold theme-text mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
                     Expert Team
                   </h3>
-                  <p className="text-gray-500 theme-text text-sm sm:text-base leading-relaxed">
+                  <p className="text-gray-500 text-white text-sm sm:text-base leading-relaxed">
                     Our team of seasoned professionals brings a wealth of
                     expertise and experience to ensure your project's success.
                   </p>
@@ -320,10 +310,10 @@ const page = () => {
 
       {/* cards */}
       <div
-        className="w-full  theme-bg
+        className="w-full h-[1380px] sm:h-[1380px] md:h-[1350px] lg:h-[1070px] bg-black
 py-12 sm:py-14 md:py-16
-px-4 sm:px-6 md:px-8
-mb-0 md:-mb-[30px]  lg:mb-[30px]
+px-4 sm:px-6 md:px-8 
+ lg:-mt-[20px]
 "
       >
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
@@ -447,7 +437,7 @@ mb-0 md:-mb-[30px]  lg:mb-[30px]
       </div>
 
       {/* marrrrr */}
-      <div className="bg-orange-400 p-5  font-semibold text-white text-xl ">
+      <div className="bg-orange-400 p-5  -mt-150 mt-0 md:-mt-155 sm:-mt-155  font-semibold text-white text-xl ">
         <Marquee gradient={false} speed={50} pauseOnHover={true}>
           <span className="mr-10 tracking-wider">
             UNLOCKING YOUR FULL POTENTIAL
@@ -488,7 +478,7 @@ mb-0 md:-mb-[30px]  lg:mb-[30px]
         className="fixed bottom-6 right-6 w-16 h-16 bg-black rounded-full flex items-center justify-center z-50 "
         style={{ boxShadow: "3px 4px 6px rgba(255, 255, 255, 0.6)" }} // smoky white shadow
       >
-        <FaWhatsapp className="text-orange-400 text-3xl hover:theme-text" />
+        <FaWhatsapp className="text-orange-400 text-3xl hover:text-white" />
       </a>
 
       {/* up arrow */}

@@ -4,7 +4,6 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/src/Components/Header/Header";
 import Footer from "@/src/Components/Footer/Footer";
 import CustomCursor from "@/src/Components/Cursor/Cursor";
-import ThemeWrapper from "@/src/Components/ThemeWrapper/ThemeWrapper";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -28,11 +27,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${plusJakarta.className} antialiased`}>
         <CustomCursor />
-        <ThemeWrapper>
+       
           <Header />
           {children}
           <Footer />
-        </ThemeWrapper>
+       
       </body>
     </html>
   );

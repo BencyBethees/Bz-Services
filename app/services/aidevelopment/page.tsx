@@ -46,9 +46,7 @@ const page = () => {
     });
   };
 
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle("dark");
-  };
+ 
 
   return (
     <div>
@@ -75,7 +73,7 @@ const page = () => {
         {/* Content */}
         <div
           className="
-      relative z-10 theme-text
+      relative z-10 text-white
       px-6 sm:px-10 md:px-20 lg:px-40
       pt-24 sm:pt-28 md:pt-36 lg:pt-44
       text-left
@@ -104,8 +102,8 @@ const page = () => {
       </div>
 
       {/* 2 */}
-      <div className="theme-bg py-10 px-5">
-        <div className="theme-bg theme-text px-6 py-16 sm:py-20 text-left mx-auto flex flex-col lg:flex-row gap-10 items-start max-w-7xl">
+      <div className="bg-black py-10 px-5">
+        <div className="bg-black text-white px-6 py-16 sm:py-20 text-left mx-auto flex flex-col lg:flex-row gap-10 items-start max-w-7xl">
           {/* LEFT: Services List */}
           <div className="p-7 bg-[#101010] w-full lg:w-1/3 order-1">
             {services.map((service, index) => (
@@ -133,7 +131,7 @@ const page = () => {
             </div>
 
             {/* Description Text */}
-            <div className="mt-6 theme-text order-2">
+            <div className="mt-6 text-white order-2">
               <h1 className="font-bold text-[30px]">AI Development</h1>
               <p className="mt-5 leading-loose text-[16px]">
                 By developing AI, we provide businesses with cutting-edge
@@ -271,7 +269,7 @@ const page = () => {
                     <span className="bg-orange-400 text-black dark:text-white w-3 h-3 flex items-center justify-center rounded-full text-xs font-bold">
                       ✓
                     </span>
-                    <span className="theme-text font-semibold text-[16px]">
+                    <span className="text-white font-semibold text-[16px]">
                       Accelerated Innovation
                     </span>
                   </li>
@@ -279,7 +277,7 @@ const page = () => {
                     <span className="bg-orange-400 text-black w-3 h-3 flex items-center justify-center rounded-full text-xs font-bold">
                       ✓
                     </span>
-                    <span className="theme-text font-semibold text-[16px]">
+                    <span className="text-white font-semibold text-[16px]">
                       Efficient Collaboration
                     </span>
                   </li>
@@ -287,7 +285,7 @@ const page = () => {
                     <span className="bg-orange-400 text-black w-3 h-3 flex items-center justify-center rounded-full text-xs font-bold">
                       ✓
                     </span>
-                    <span className="theme-text font-semibold text-[16px]">
+                    <span className="text-white font-semibold text-[16px]">
                       Enhanced Decision-Making
                     </span>
                   </li>
@@ -295,7 +293,7 @@ const page = () => {
                     <span className="bg-orange-400 text-black w-3 h-3 flex items-center justify-center rounded-full text-xs font-bold">
                       ✓
                     </span>
-                    <span className="theme-text font-semibold text-[16px]">
+                    <span className="text-white font-semibold text-[16px]">
                       Personalization at Scale
                     </span>
                   </li>
@@ -303,7 +301,7 @@ const page = () => {
                     <span className="bg-orange-400 text-black w-3 h-3 flex items-center justify-center rounded-full text-xs font-bold">
                       ✓
                     </span>
-                    <span className="theme-text font-semibold text-[16px]">
+                    <span className="text-white font-semibold text-[16px]">
                       Advanced Predictive Analytics
                     </span>
                   </li>
@@ -352,7 +350,7 @@ const page = () => {
         className="fixed bottom-6 right-6 w-16 h-16 bg-black rounded-full flex items-center justify-center z-50 "
         style={{ boxShadow: "3px 4px 6px rgba(255, 255, 255, 0.6)" }} // smoky white shadow
       >
-        <FaWhatsapp className="text-orange-400 text-3xl hover:theme-text" />
+        <FaWhatsapp className="text-orange-400 text-3xl hover:text-white" />
       </a>
     </div>
   );
