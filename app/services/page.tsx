@@ -7,6 +7,8 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FaArrowUpLong } from "react-icons/fa6";
 import { useState } from "react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import ThemeToggle from "@/src/Components/ThemeToggle";
 
 interface Service {
   icon: string;
@@ -14,6 +16,26 @@ interface Service {
   description: string;
   link: string;
 }
+
+const HeroBackground = () => {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
+  return (
+    <div
+      className="absolute inset-0 w-full h-full bg-no-repeat bg-center bg-cover transition-all duration-500"
+      style={{
+        backgroundImage:
+          resolvedTheme === "dark"
+            ? "url('/image/bg.jpg')"
+            : "url('/image/bg.jpg')",
+      }}
+    />
+  );
+};
 
 const page = () => {
   const [services, setServices] = useState<Service[]>([]);
@@ -63,26 +85,30 @@ const page = () => {
       <div className="relative  sm:h-[85vh] md:h-[90vh] lg:h-[100vh] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
-          <div
-            className="
-      absolute inset-0
-      w-full h-full
-      bg-no-repeat
-      bg-center
-      bg-cover
-      bg-[url('/image/bg.jpg')]
-     
-    "
-          ></div>
+          <HeroBackground />
         </div>
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#646060] via-black/60 to-black"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#646060] via-black/60 to-black"></div> */}
+        <div
+          className="
+    absolute inset-0 transition-all duration-500
 
+    bg-gradient-to-t
+    from-white/80
+    via-white/40
+    to-transparent
+
+dark:bg-gradient-to-t
+    dark:from-black
+    dark:via-black/50
+    dark:to-black/30
+  "
+        ></div>
         {/* Content */}
         <div
           className="
-      relative z-10 text-white
+      relative z-10 theme-text
       px-6 sm:px-10 md:px-20 lg:px-40
       pt-24 sm:pt-28 md:pt-36 lg:pt-44
       text-left
@@ -93,7 +119,7 @@ const page = () => {
             <span className="hover:text-orange-400 mt-16 cursor-pointer">
               Home
             </span>
-            <span className="inline-block mt-2 w-1 h-1 bg-white rounded-full mt-16 lg:w-0.5 lg:h-0.5"></span>
+            <span className="inline-block mt-2 w-1 h-1  theme-bg rounded-full mt-16 lg:w-0.5 lg:h-0.5"></span>
             <span className="hover:text-orange-400 mt-16 cursor-pointer">
               Services
             </span>
@@ -105,8 +131,9 @@ const page = () => {
           </h1>
         </div>
       </div>
+
       {/*SECOND SECTION  */}
-      <div className="bg-black text-white  px-6 py-16 sm:py-10 text-center  sm:mt-0 md:-mt-10 md:mb-12">
+      <div className="theme-bg theme-text  px-6 py-16 sm:py-10 text-center  sm:mt-0 md:-mt-10 md:mb-12">
         <div className="flex justify-center mt-10 sm:mt-16 ">
           <span className="w-2 h-2 -mt-5 bg-orange-400 rounded-full text-2xl"></span>
         </div>
@@ -122,7 +149,7 @@ const page = () => {
       </div>
 
       {/*  CARDS */}
-      <div className="w-full  bg-black lg:-mt-12 md:-mt-12 px-6">
+      <div className="w-full  theme-bg lg:-mt-12 md:-mt-12 px-6">
         <div className="max-w-7xl mx-5 my-5 -mt-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 ">
           {services?.map((service, index) => (
             <div
@@ -170,7 +197,7 @@ const page = () => {
       </div>
 
       {/* grid */}
-      <div className="w-full md:-mt-13 sm:-mt-10 -mt-10  lg:-mt-5 bg-black py-16 md:py-20 px-6 md:px-10 lg:px-20 overflow-hidden ">
+      <div className="w-full md:-mt-13 sm:-mt-10 -mt-10  lg:-mt-5 theme-bg py-16 md:py-20 px-6 md:px-10 lg:px-20 overflow-hidden ">
         <div
           className="max-w-7xl mx-auto 
     flex flex-col 
@@ -187,7 +214,7 @@ const page = () => {
               WHY CHOOSE US
             </p>
 
-            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold theme-textleading-tight">
               Providing the best
               <br className="hidden sm:block" /> services
             </h2>
@@ -210,10 +237,10 @@ const page = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold theme-text mb-2">
                     Innovative Approach
                   </h3>
-                  <p className="text-white text-sm sm:text-base leading-relaxed">
+                  <p className="theme-text text-sm sm:text-base leading-relaxed">
                     Our company stands out for its innovative thinking, offering
                     fresh perspectives and creative solutions to meet your
                     unique needs.
@@ -238,10 +265,10 @@ const page = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold theme-text mb-2">
                     Proven Track Record
                   </h3>
-                  <p className="text-gray-500 text-white text-sm sm:text-base leading-relaxed">
+                  <p className="text-gray-500 theme-text text-sm sm:text-base leading-relaxed">
                     With a successful track record of delivering high-quality
                     projects, we have earned the trust of numerous satisfied
                     clients.
@@ -266,10 +293,10 @@ const page = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold theme-text mb-2">
                     Expert Team
                   </h3>
-                  <p className="text-gray-500 text-white text-sm sm:text-base leading-relaxed">
+                  <p className="text-gray-500 theme-text text-sm sm:text-base leading-relaxed">
                     Our team of seasoned professionals brings a wealth of
                     expertise and experience to ensure your project's success.
                   </p>
@@ -310,7 +337,7 @@ const page = () => {
 
       {/* cards */}
       <div
-        className="w-full h-[1380px] sm:h-[1380px] md:h-[1350px] lg:h-[1070px] bg-black
+        className="w-full h-[1380px] sm:h-[1380px] md:h-[1350px] lg:h-[1070px] theme-bg
 py-12 sm:py-14 md:py-16
 px-4 sm:px-6 md:px-8 
  lg:-mt-[20px]
@@ -510,6 +537,9 @@ px-4 sm:px-6 md:px-8
           </div>
         </button>
       )}
+
+      {/* theme toggle button */}
+      <ThemeToggle />
     </>
   );
 };

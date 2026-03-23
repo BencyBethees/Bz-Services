@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/src/Components/Header/Header";
 import Footer from "@/src/Components/Footer/Footer";
 import CustomCursor from "@/src/Components/Cursor/Cursor";
+import { Providers } from "./providers";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -24,14 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${plusJakarta.className} antialiased`}>
-        <CustomCursor />
-       
+        <Providers>
+          <CustomCursor />
           <Header />
           {children}
           <Footer />
-       
+        </Providers>
       </body>
     </html>
   );
