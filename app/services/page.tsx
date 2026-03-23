@@ -82,7 +82,7 @@ const page = () => {
   return (
     <>
       {/*HERO*/}
-      <div className="relative  sm:h-[85vh] md:h-[90vh] lg:h-[100vh] overflow-hidden">
+      <div className="relative  sm:h-[100vh] md:h-[100vh] lg:h-[100vh] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
           <HeroBackground />
