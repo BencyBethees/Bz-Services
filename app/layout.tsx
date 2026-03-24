@@ -5,6 +5,7 @@ import Header from "@/src/Components/Header/Header";
 import Footer from "@/src/Components/Footer/Footer";
 import CustomCursor from "@/src/Components/Cursor/Cursor";
 import { Providers } from "./providers";
+import 'aos/dist/aos.css';
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],

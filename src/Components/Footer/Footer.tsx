@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaLinkedinIn,
   FaFacebookF,
@@ -8,6 +8,9 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import AOS from "aos";
+import 'aos/dist/aos.css';
+
 
 const menuColumn1 = ["Home", "About Us", "Services", "Success Stories"];
 const menuColumn2 = ["Blogs", "Careers", "Contact Us"];
@@ -46,6 +49,13 @@ const Footer = () => {
     }, 1500);
   };
 
+   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+     AOS.refresh()
+  }, []);
+
   return (
     <footer
       className="relative w-full bg-[#131313] text-white overflow-hidden min-h-[582px]"
@@ -82,7 +92,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
           {/* Logo + Social */}
           <div className="flex flex-col items-center lg:items-start space-y-8">
-            <img
+            <img data-aos="fade-up" 
               src="/image/bq.png"
               alt="logo"
               className="w-[140px] md:w-[180px]"

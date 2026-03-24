@@ -9,6 +9,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import ThemeToggle from "@/src/Components/ThemeToggle";
+import AOS from "aos";
+import 'aos/dist/aos.css';
 
 interface Service {
   icon: string;
@@ -16,6 +18,8 @@ interface Service {
   description: string;
   link: string;
 }
+
+
 
 const HeroBackground = () => {
   const { resolvedTheme } = useTheme();
@@ -43,6 +47,13 @@ const page = () => {
   const [showArrow, setShowArrow] = useState(false);
 
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+  AOS.init({
+    duration: 1000,
+  });
+   AOS.refresh()
+}, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -111,29 +122,27 @@ dark:bg-gradient-to-t
       relative z-10 theme-text
       px-6 sm:px-10 md:px-20 lg:px-40
       pt-24 sm:pt-28 md:pt-36 lg:pt-44
-      text-left
+      text-left mt-6 mb-4 lg:mt-18
     "
         >
           {/* Breadcrumb */}
-          <div className="mb-5 md:mt-[0px] mt-6 text-[12px] font-semibold sm:text-sm md:text-base lg:text-base lg:-ml-[110px] flex items-center gap-2">
-            <span className="hover:text-orange-400 mt-16 cursor-pointer">
-              Home
-            </span>
-            <span className="inline-block mt-2 w-1 h-1  theme-bg rounded-full mt-16 lg:w-0.5 lg:h-0.5"></span>
-            <span className="hover:text-orange-400 mt-16 cursor-pointer">
+          <div className="mb-1 md:mt-[0px] mt-1 text-[12px] font-semibold sm:text-sm md:text-xl lg:text-base lg:-ml-[110px] flex items-center gap-2">
+            <span className="hover:text-orange-400  cursor-pointer">Home</span>
+            <span className="inline-block mt-2 w-1 h-1  theme-bg rounded-full  lg:w-0.5 lg:h-0.5"></span>
+            <span className="hover:text-orange-400 cursor-pointer">
               Services
             </span>
           </div>
 
           {/* Hero Heading */}
-          <h1 className="mt-4 sm:mt-6 md:mt-8 lg:mt-5 text-4xl sm:text-2xl md:text-5xl lg:text-[60px] font-extrabold lg:-ml-[110px]">
+          <h1 className="mt-2 sm:mt-3 md:mt-8 lg:mt-5 text-4xl sm:text-5xl md:text-5xl lg:text-[60px] font-extrabold lg:-ml-[110px]">
             Services
           </h1>
         </div>
       </div>
 
       {/*SECOND SECTION  */}
-      <div className="theme-bg theme-text  px-6 py-16 sm:py-10 text-center  sm:mt-0 md:-mt-10 md:mb-12">
+      <div data-aos="fade-up" className="theme-bg theme-text  px-6 py-16 sm:py-10 text-center  sm:mt-0 md:-mt-10 md:mb-12">
         <div className="flex justify-center mt-10 sm:mt-16 ">
           <span className="w-2 h-2 -mt-5 bg-orange-400 rounded-full text-2xl"></span>
         </div>
@@ -149,14 +158,17 @@ dark:bg-gradient-to-t
       </div>
 
       {/*  CARDS */}
-      <div className="w-full  theme-bg lg:-mt-12 md:-mt-12 px-6">
-        <div className="max-w-7xl mx-5 my-5 -mt-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 ">
+      <div className="w-full theme-bg lg:-mt-12  md:-mt-12 px-0 sm:px-4 md:px-6">
+        <div
+          data-aos="fade-up"
+          className="max-w-7xl mx-5 my-5 -mt-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 "
+        >
           {services?.map((service, index) => (
-            <div
+            <div data-aos="fade-up"
               key={index}
               className="bg-[#101010] text-[#EAEAEA]
-  w-full p-8 sm:p-10
-  text-left
+  w-full p-8 sm:p-1
+  text-left lg:p-10
   border border-transparent
   hover:border-white
   transition-all duration-300
@@ -170,12 +182,12 @@ dark:bg-gradient-to-t
               />
 
               {/* Title */}
-              <h3 className="text-xl sm:text-xl font-bold hover:text-orange-400 cursor-pointer">
+              <h3 className="text-xl sm:text-lg font-bold hover:text-orange-400 cursor-pointer">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-base lg:text-sm leading-6 lg:leading-6 font-semibold text-[#CFCFCF]">
+              <p className="text-base lg:text-sm sm:text-lg leading-6 lg:leading-6 font-semibold text-[#CFCFCF]">
                 {service.description}
               </p>
 
@@ -206,9 +218,9 @@ dark:bg-gradient-to-t
     gap-14 lg:gap-20"
         >
           {/* ================= LEFT CONTENT ================= */}
-          <div className="w-full lg:w-1/2">
+          <div data-aos="fade-right" className="w-full  lg:w-1/2">
             {/* Orange Dot */}
-            <div className="text-orange-400 text-3xl mb-4">•</div>
+            <div  className="text-orange-400 text-3xl mb-4">•</div>
 
             <p className="text-sm font-bold text-gray-400 tracking-widest">
               WHY CHOOSE US
@@ -306,7 +318,7 @@ dark:bg-gradient-to-t
           </div>
 
           {/* ================= RIGHT IMAGE ================= */}
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
+          <div data-aos="fade-left" className="w-full  lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
             <div
               className="relative 
         w-72 h-72 
@@ -316,7 +328,7 @@ dark:bg-gradient-to-t
         flex items-center justify-center"
             >
               {/* Rotating Orange Ring */}
-              <img
+              <img 
                 src="/image/c.png"
                 alt="Background Shape"
                 className="absolute w-[200%] h-[200%] object-contain animate-spin [animation-duration:4s]"
@@ -336,11 +348,11 @@ dark:bg-gradient-to-t
       </div>
 
       {/* cards */}
-      <div
+      <div  
         className="w-full h-[1380px] sm:h-[1380px] md:h-[1350px] lg:h-[1070px] theme-bg
 py-12 sm:py-14 md:py-16
 px-4 sm:px-6 md:px-8 
- lg:-mt-[20px]
+ lg:-mt-[20px]  
 "
       >
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
